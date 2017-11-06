@@ -1,5 +1,6 @@
 package com.normalweather.android;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.normalweather.android.gson.Forecast;
 import com.normalweather.android.gson.Weather;
+import com.normalweather.android.service.AutoUpdateService;
 import com.normalweather.android.util.HttpUtil;
 import com.normalweather.android.util.Utility;
 
@@ -201,6 +203,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
     /**
      * 加载必应每日一图
